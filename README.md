@@ -41,3 +41,47 @@ The gem is available as open source under the terms of the [MIT License](https:/
 ## Code of Conduct
 
 Everyone interacting in the CreateGemTutor project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/create_gem_tutor/blob/main/CODE_OF_CONDUCT.md).
+
+
+Step 1
+`gem update bundler`  
+`gem install bundler`  
+
+`bundle gem hola_el_mundo` create a gem (with floder)  
+When success result will show:  
+
+```
+Creating gem 'create_gem_tutor'...
+MIT License enabled in config
+Code of conduct enabled in config
+Changelog enabled in config
+RuboCop enabled in config
+Initializing git repo in /Users/johnnyliu/Documents/rubyProjects/create_gem_tutor
+      create  create_gem_tutor/Gemfile
+      create  create_gem_tutor/lib/create_gem_tutor.rb
+      create  create_gem_tutor/lib/create_gem_tutor/version.rb
+      create  create_gem_tutor/create_gem_tutor.gemspec
+      create  create_gem_tutor/Rakefile
+      create  create_gem_tutor/README.md
+      create  create_gem_tutor/bin/console
+      create  create_gem_tutor/bin/setup
+    conflict  create_gem_tutor/.gitignore
+Overwrite /Users/johnnyliu/Documents/rubyProjects/create_gem_tutor/.gitignore? (enter "h" for help) [Ynaqdhm] h
+        Y - yes, overwrite
+        n - no, do not overwrite
+        a - all, overwrite this and all others
+        q - quit, abort
+        d - diff, show the differences between the old and the new
+        h - help, show this help
+        m - merge, run merge tool
+Overwrite /Users/johnnyliu/Documents/rubyProjects/create_gem_tutor/.gitignore? (enter "h" for help) [Ynaqdhm] Y
+       force  create_gem_tutor/.gitignore
+      create  create_gem_tutor/.rspec
+      create  create_gem_tutor/spec/spec_helper.rb
+      create  create_gem_tutor/spec/create_gem_tutor_spec.rb
+      create  create_gem_tutor/.github/workflows/main.yml
+      create  create_gem_tutor/LICENSE.txt
+      create  create_gem_tutor/CODE_OF_CONDUCT.md
+      create  create_gem_tutor/CHANGELOG.md
+      create  create_gem_tutor/.rubocop.yml
+```
