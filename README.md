@@ -43,7 +43,7 @@ The gem is available as open source under the terms of the [MIT License](https:/
 Everyone interacting in the CreateGemTutor project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/create_gem_tutor/blob/main/CODE_OF_CONDUCT.md).
 
 
-Step 1
+### Step 1
 `gem update bundler`  
 `gem install bundler`  
 
@@ -84,4 +84,28 @@ Overwrite /Users/johnnyliu/Documents/rubyProjects/create_gem_tutor/.gitignore? (
       create  create_gem_tutor/CODE_OF_CONDUCT.md
       create  create_gem_tutor/CHANGELOG.md
       create  create_gem_tutor/.rubocop.yml
+```
+
+### Step 2
+build a sample gem.
+
+`lib/create_gem_tutor.rb` write a `hello` sample code.  
+Revise `.gemspec` `TODO`.  
+Then run `gem build create_gem_tutor.gemspec`.  
+Will show success result:
+
+```
+  Successfully built RubyGem
+  Name: create_gem_tutor
+  Version: 0.1.0
+  File: create_gem_tutor-0.1.0.gem
+```
+  
+You can install `gem install ./create_gem_tutor-0.1.0.gem` (./ is because local)  
+enter irb  
+
+```
+require 'create_gem_tutor'
+
+CreateGemTutor.hello
 ```
