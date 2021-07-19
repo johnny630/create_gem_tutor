@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'create_gem_tutor'
+
+CreateGemTutor.hello(ARGV[0])

@@ -3,7 +3,7 @@
 require_relative "create_gem_tutor/version"
 
 module CreateGemTutor
-  def self.hello
-    puts 'hello'
+  def self.hello(name)
+    puts "hello #{name}"
   end
 end
