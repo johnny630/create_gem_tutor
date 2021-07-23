@@ -3,7 +3,12 @@
 require_relative "create_gem_tutor/version"
 
 module CreateGemTutor
-  def self.hello(name)
-    puts "hello #{name}"
+  class Error < StandardError; end
+
+  class Application
+    def call(env)
+      [200, {'Content-Type' => 'text/html'},
+       ["I am Johnny, just do !!"]]
+    end
   end
 end

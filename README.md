@@ -115,3 +115,10 @@ Create a simple `bin/hello` and revise `hello` method accept a arg.
 then uninstall origin gem and reinstall `gem uninstall create_gem_tutor`, `gem install ./create_gem_tutor-0.1.0.gem`  
 
 You can run `bin/hello johnny`, should show `hello johnny`!
+
+### Step 4 make a simple rack
+`.gemspec` add `spec.add_runtime_dependency "rack", "~> 2.2"`.  
+Revise create a `class Application`  
+And rebuild and reinstall the gem
+
+Then go to `create_gem_tutor_web` Step 1.

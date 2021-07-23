@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["bakolama@gmail.com"]
 
   spec.summary       = "Create gem tutor."
-  spec.description   = "Create gem tutor."
+  spec.description   = "Create gem tutor description."
   spec.homepage      = "https://github.com/johnny630/create_gem_tutor.git"
   spec.license       = "MIT"
   spec.required_ruby_version = ">= 2.4.0"
@@ -31,6 +31,8 @@ Gem::Specification.new do |spec|
 
   # Uncomment to register a new dependency of your gem
   # spec.add_dependency "example-gem", "~> 1.0"
+  spec.add_runtime_dependency "rack", "~> 2.2"
+  spec.add_development_dependency "rspec", "~> 3.10"
 
   # For more information and examples about making a new gem, checkout our
   # guide at: https://bundler.io/guides/creating_gem.html
