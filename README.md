@@ -123,9 +123,15 @@ And rebuild and reinstall the gem
 
 Then go to `create_gem_tutor_web` Step 1.
 
-### Step 5 review Application call
+### Step 5 see env values
 Revise to print all end values `env.to_s`.  
 Then rebuild `gem uninstall create_gem_tutor`, `gem build create_gem_tutor.gemspec`, `gem install ./create_gem_tutor-0.1.0.gem`.  
 Then switch to `create_gem_tutor_web` restart `rackup -p 3001`.  
 You can see `env` values.
 
+### Step 6 create simple controller
+We use env['PATH_INFO'] separate controller and action
+
+key word:
+`env['PATH_INFO']`
+`Object.cons_get()`
