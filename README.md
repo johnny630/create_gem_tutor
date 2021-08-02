@@ -135,3 +135,7 @@ We use env['PATH_INFO'] separate controller and action
 key word:
 `env['PATH_INFO']`
 `Object.cons_get()`
+
+### Step 7 create handle path exception and favorites icon error
+`lib/create_gem_tutor.rb` add handle favicon.ico not exist,
+and handle path not found exception

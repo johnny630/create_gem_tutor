@@ -8,15 +8,26 @@ module CreateGemTutor
 
   class Application
     def call(env)
-      klass, action = get_controller_and_action(env)
-      controller = klass.new(env)
-      text = controller.send(action)
+      # handle favicon.ico not exist
+      if env['PATH_INFO'] == '/favicon.ico'
+        return [404, {'Content-Type' => 'text/html'}, []]
+      end
 
-      [
-        200,
-        {'Content-Type' => 'text/html'},
-        [text]
-      ]
+      begin
+        klass, action = get_controller_and_action(env)
+        controller = klass.new(env)
+        text = controller.send(action)
+
+        [
+          200,
+          {'Content-Type' => 'text/html'},
+          [text]
+        ]
+      rescue
+        # handle page not found
+        [404, {'Content-Type' => 'text/html'},
+          ['This is a 404 page!!']]
+      end
     end
   end
 
