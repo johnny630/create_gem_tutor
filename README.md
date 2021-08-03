@@ -139,3 +139,6 @@ key word:
 ### Step 7 create handle path exception and favorites icon error
 `lib/create_gem_tutor.rb` add handle favicon.ico not exist,
 and handle path not found exception
+
+### Step 8 create default index page
+`lib/create_gem_tutor.rb` create a default index controller
