@@ -142,3 +142,7 @@ and handle path not found exception
 
 ### Step 8 create default index page
 `lib/create_gem_tutor.rb` create a default index controller
+
+### Step 9 create const missing
+Revise Object self.const_missing
+

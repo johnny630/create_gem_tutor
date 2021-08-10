@@ -2,6 +2,8 @@
 
 require_relative "create_gem_tutor/version"
 require_relative "create_gem_tutor/routing"
+require_relative "create_gem_tutor/support"
+require_relative "create_gem_tutor/dependencies"
 
 module CreateGemTutor
   class Error < StandardError; end
