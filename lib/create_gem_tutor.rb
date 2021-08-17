@@ -4,6 +4,7 @@ require_relative "create_gem_tutor/version"
 require_relative "create_gem_tutor/routing"
 require_relative "create_gem_tutor/support"
 require_relative "create_gem_tutor/dependencies"
+require_relative "create_gem_tutor/controller"
 
 module CreateGemTutor
   class Error < StandardError; end
@@ -46,14 +47,6 @@ module CreateGemTutor
 
     def favicon
       return [404, {'Content-Type' => 'text/html'}, []]
-    end
-  end
-
-  class Controller
-    attr_reader :env
-
-    def initialize(env)
-      @env = env
     end
   end
 end

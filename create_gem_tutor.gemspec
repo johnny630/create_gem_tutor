@@ -33,6 +33,8 @@ Gem::Specification.new do |spec|
   # spec.add_dependency "example-gem", "~> 1.0"
   spec.add_runtime_dependency "rack", "~> 2.2"
   spec.add_development_dependency "rspec", "~> 3.10"
+  # 加上 erubi template
+  spec.add_runtime_dependency "erubi", "~> 1.10"
 
   # For more information and examples about making a new gem, checkout our
   # guide at: https://bundler.io/guides/creating_gem.html

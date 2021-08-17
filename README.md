@@ -149,3 +149,6 @@ Revise Object self.const_missing
 ### Step 10 const missing add controller not found prevention
 const_missing add @called_const_missing to record controller is exist?
 
+### Step 11 create template
+use `erubi` gem
+create a `controller` `render`
