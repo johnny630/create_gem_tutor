@@ -157,3 +157,6 @@ create a `controller` `render`
 Controller set a variable to mark if called render?  
 If controller won't call `render` then call `default_render`.  
 Then app controller can remove `render`.
+
+### Step 13: Create simple controller helper
+We can create a `link_to` method in controller, Then app can use the helper method.

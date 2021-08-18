@@ -16,6 +16,10 @@ module CreateGemTutor
       eval(Erubi::Engine.new(template).src)
     end
 
+    def link_to(name = nil, url = nil)
+        "<a href=\"#{ url }\">#{ name }</a>"
+    end
+
     def controller_name
       klass = self.class
       klass = klass.to_s.gsub /Controller$/, ''
