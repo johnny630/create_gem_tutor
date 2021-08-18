@@ -43,11 +43,11 @@ The gem is available as open source under the terms of the [MIT License](https:/
 Everyone interacting in the CreateGemTutor project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/create_gem_tutor/blob/main/CODE_OF_CONDUCT.md).
 
 
-### Step 1
+### Step 1:
 `gem update bundler`  
 `gem install bundler`  
 
-`bundle gem hola_el_mundo` create a gem (with floder)  
+`bundle gem create_gem_tutor` create a gem (with floder)  
 When success result will show:  
 
 ```
@@ -86,7 +86,7 @@ Overwrite /Users/johnnyliu/Documents/rubyProjects/create_gem_tutor/.gitignore? (
       create  create_gem_tutor/.rubocop.yml
 ```
 
-### Step 2
+### Step 2:
 build a sample gem.
 
 `lib/create_gem_tutor.rb` write a `hello` sample code.  
@@ -110,45 +110,50 @@ require 'create_gem_tutor'
 CreateGemTutor.hello
 ```
 
-### Step 3 create a simple bin
+### Step 3: create a simple bin
 Create a simple `bin/hello` and revise `hello` method accept a arg.  
 then uninstall origin gem and reinstall `gem uninstall create_gem_tutor`, `gem install ./create_gem_tutor-0.1.0.gem`  
 
 You can run `bin/hello johnny`, should show `hello johnny`!
 
-### Step 4 make a simple rack
+### Step 4: make a simple rack
 `.gemspec` add `spec.add_runtime_dependency "rack", "~> 2.2"`.  
 Revise create a `class Application`  
 And rebuild and reinstall the gem
 
 Then go to `create_gem_tutor_web` Step 1.
 
-### Step 5 see env values
+### Step 5: see env values
 Revise to print all end values `env.to_s`.  
 Then rebuild `gem uninstall create_gem_tutor`, `gem build create_gem_tutor.gemspec`, `gem install ./create_gem_tutor-0.1.0.gem`.  
 Then switch to `create_gem_tutor_web` restart `rackup -p 3001`.  
 You can see `env` values.
 
-### Step 6 create simple controller
+### Step 6: create simple controller
 We use env['PATH_INFO'] separate controller and action
 
 key word:
 `env['PATH_INFO']`
 `Object.cons_get()`
 
-### Step 7 create handle path exception and favorites icon error
+### Step 7: create handle path exception and favorites icon error
 `lib/create_gem_tutor.rb` add handle favicon.ico not exist,
 and handle path not found exception
 
-### Step 8 create default index page
+### Step 8: create default index page
 `lib/create_gem_tutor.rb` create a default index controller
 
-### Step 9 create const missing
+### Step 9: create const missing
 Revise Object self.const_missing 
 
-### Step 10 const missing add controller not found prevention
+### Step 10: const missing add controller not found prevention
 const_missing add @called_const_missing to record controller is exist?
 
-### Step 11 create template
+### Step 11: create template
 use `erubi` gem
 create a `controller` `render`
+
+### Step 12: Default render
+Controller set a variable to mark if called render?  
+If controller won't call `render` then call `default_render`.  
+Then app controller can remove `render`.

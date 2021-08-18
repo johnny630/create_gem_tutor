@@ -19,6 +19,8 @@ module CreateGemTutor
         klass, action = get_controller_and_action(env)
         controller = klass.new(env)
         text = controller.send(action)
+        # if won't call controller render, then execute default render
+        text = default_render(controller, action) unless controller.called_render
 
         [
           200,
@@ -47,6 +49,10 @@ module CreateGemTutor
 
     def favicon
       return [404, {'Content-Type' => 'text/html'}, []]
+    end
+
+    def default_render(controller, action)
+      controller.render(action)
     end
   end
 end
