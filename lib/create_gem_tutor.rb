@@ -18,9 +18,10 @@ module CreateGemTutor
       begin
         klass, action = get_controller_and_action(env)
         controller = klass.new(env)
-        text = controller.send(action)
+        controller.send(action)
         # if won't call controller render, then execute default render
-        text = default_render(controller, action) unless controller.called_render
+        default_render(controller, action) unless controller.called_render
+        text = controller.render_layout
 
         [
           200,

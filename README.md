@@ -160,3 +160,7 @@ Then app controller can remove `render`.
 
 ### Step 13: Create simple controller helper
 We can create a `link_to` method in controller, Then app can use the helper method.
+
+### Step 14: Create simple layout
+see lib/create_gem_tutor/controller.rb
+see lib/create_gem_tutor.rb
