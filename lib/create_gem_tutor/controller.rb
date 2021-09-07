@@ -1,5 +1,9 @@
+require "create_gem_tutor/file_model"
+
 module CreateGemTutor
   class Controller
+    include CreateGemTutor::Model
+
     attr_reader :env, :called_render
 
     def initialize(env)
@@ -26,6 +30,7 @@ module CreateGemTutor
       # if execute the render change to true
       @called_render = true
       filename = File.join('app', 'views', controller_name, "#{view_name}.html.erb")
+      puts filename
       template = File.read filename
 
       # 原本直接 render 畫面，改為丟到 @content

@@ -164,3 +164,7 @@ We can create a `link_to` method in controller, Then app can use the helper meth
 ### Step 14: Create simple layout
 see lib/create_gem_tutor/controller.rb
 see lib/create_gem_tutor.rb
+
+### Step 15: Create model
+user `multi_json` gem and create file model.
+model add `find` method.

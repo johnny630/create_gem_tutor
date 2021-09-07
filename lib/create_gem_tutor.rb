@@ -5,6 +5,7 @@ require_relative "create_gem_tutor/routing"
 require_relative "create_gem_tutor/support"
 require_relative "create_gem_tutor/dependencies"
 require_relative "create_gem_tutor/controller"
+require_relative "create_gem_tutor/file_model"
 
 module CreateGemTutor
   class Error < StandardError; end
@@ -19,6 +20,8 @@ module CreateGemTutor
         klass, action = get_controller_and_action(env)
         controller = klass.new(env)
         controller.send(action)
+        puts controller
+        puts action
         # if won't call controller render, then execute default render
         default_render(controller, action) unless controller.called_render
         text = controller.render_layout
@@ -28,7 +31,8 @@ module CreateGemTutor
           {'Content-Type' => 'text/html'},
           [text]
         ]
-      rescue
+      rescue => e
+        puts e.backtrace
         # handle page not found
         [404, {'Content-Type' => 'text/html'},
           ['This is a 404 page!!']]

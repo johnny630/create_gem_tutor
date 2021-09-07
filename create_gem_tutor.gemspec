@@ -35,6 +35,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec", "~> 3.10"
   # 加上 erubi template
   spec.add_runtime_dependency "erubi", "~> 1.10"
+  spec.add_runtime_dependency "multi_json", "~> 1.15"
 
   # For more information and examples about making a new gem, checkout our
   # guide at: https://bundler.io/guides/creating_gem.html
