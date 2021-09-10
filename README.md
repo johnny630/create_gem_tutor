@@ -168,3 +168,7 @@ see lib/create_gem_tutor.rb
 ### Step 15: Create model
 user `multi_json` gem and create file model.
 model add `find` method.
+
+### Step 16: add `all` and `create` method in model
+lib/create_gem_tutor/file_model.rb
+`self.all`, `self.create(attrs)`
