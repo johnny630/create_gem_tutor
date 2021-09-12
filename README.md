@@ -172,3 +172,7 @@ model add `find` method.
 ### Step 16: add `all` and `create` method in model
 lib/create_gem_tutor/file_model.rb
 `self.all`, `self.create(attrs)`
+
+### Step 17: create request and response in controller
+`Rack::Request.new(@env)`
+`Rack::Response.new(text, status, headers)`

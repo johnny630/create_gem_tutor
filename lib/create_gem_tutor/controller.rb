@@ -4,13 +4,10 @@ module CreateGemTutor
   class Controller
     include CreateGemTutor::Model
 
-    attr_reader :env, :called_render
+    attr_reader :env, :content
 
     def initialize(env)
       @env = env
-      # default set false
-      @called_render = false
-
       # 加上一個 @content
       @content = nil
     end
@@ -18,7 +15,8 @@ module CreateGemTutor
     # 改為直接 render layout
     def render_layout
       layout = File.read "app/views/layouts/application.html.erb"
-      eval(Erubi::Engine.new(layout).src)
+      text = eval(Erubi::Engine.new(layout).src)
+      response(text)
     end
 
     # 透過寫在 layout 的 <%= content %> 來讀取內容
@@ -27,8 +25,6 @@ module CreateGemTutor
     end
 
     def render(view_name)
-      # if execute the render change to true
-      @called_render = true
       filename = File.join('app', 'views', controller_name, "#{view_name}.html.erb")
       puts filename
       template = File.read filename
@@ -45,6 +41,23 @@ module CreateGemTutor
       klass = self.class
       klass = klass.to_s.gsub /Controller$/, ''
       CreateGemTutor.to_underscore(klass)
+    end
+
+    def request
+      @request ||= Rack::Request.new(@env)
+    end
+
+    def params
+      request.params
+    end
+
+    def response(text, status = 200, headers = {})
+      raise 'Already responded!' if @response
+      @response = Rack::Response.new(text, status, headers)
+    end
+
+    def get_response
+      @response
     end
   end
 end

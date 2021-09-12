@@ -23,14 +23,18 @@ module CreateGemTutor
         puts controller
         puts action
         # if won't call controller render, then execute default render
-        default_render(controller, action) unless controller.called_render
-        text = controller.render_layout
+        default_render(controller, action) unless controller.content
+        controller.render_layout
 
-        [
-          200,
-          {'Content-Type' => 'text/html'},
-          [text]
-        ]
+        if controller.get_response
+          controller.get_response.to_a
+        else
+          [
+            500,
+            {'Content-Type' => 'text/html'},
+            ['server error!!']
+          ]
+        end
       rescue => e
         puts e.backtrace
         # handle page not found
