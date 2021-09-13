@@ -176,3 +176,8 @@ lib/create_gem_tutor/file_model.rb
 ### Step 17: create request and response in controller
 `Rack::Request.new(@env)`
 `Rack::Response.new(text, status, headers)`
+
+### Step 18: create sqlite model
+`.gem` add `spec.add_runtime_dependency 'sqlite3'`
+`support.rb` create a simple `to_plural`
+create `sqlite_model.rb`

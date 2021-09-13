@@ -6,6 +6,7 @@ require_relative "create_gem_tutor/support"
 require_relative "create_gem_tutor/dependencies"
 require_relative "create_gem_tutor/controller"
 require_relative "create_gem_tutor/file_model"
+require_relative "create_gem_tutor/sqlite_model"
 
 module CreateGemTutor
   class Error < StandardError; end

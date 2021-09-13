@@ -36,6 +36,7 @@ Gem::Specification.new do |spec|
   # 加上 erubi template
   spec.add_runtime_dependency "erubi", "~> 1.10"
   spec.add_runtime_dependency "multi_json", "~> 1.15"
+  spec.add_runtime_dependency 'sqlite3'
 
   # For more information and examples about making a new gem, checkout our
   # guide at: https://bundler.io/guides/creating_gem.html
