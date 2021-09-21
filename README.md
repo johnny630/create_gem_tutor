@@ -181,3 +181,6 @@ lib/create_gem_tutor/file_model.rb
 `.gem` add `spec.add_runtime_dependency 'sqlite3'`
 `support.rb` create a simple `to_plural`
 create `sqlite_model.rb`
+
+### Step 19: sqlite model add methods
+model add `self.create`, `self.find`, `self.all`, `[](name)`, `[]=(name, value)`, `save!`, `save`, `count` methods
