@@ -10,6 +10,37 @@ module CreateGemTutor
         @hash = data
       end
 
+      def method_missing(attr, *args)
+        attrs = self.class.schema
+        attr = attr.to_s.gsub('=', '')
+        if attrs.key?(attr)
+          self.class.define_attr(attrs)
+          val = args.empty? ? self.send(attr) : self.send("#{attr}=", args[0])
+          val
+        else
+          super
+        end
+      end
+
+      def self.define_attr(attrs)
+        attrs.keys.each do |attr|
+          add_method_to_get(attr)
+          add_method_to_set(attr)
+        end
+      end
+
+      def self.add_method_to_get(attr)
+        define_method attr do
+          self[attr.to_s]
+        end
+      end
+
+      def self.add_method_to_set(attr)
+        define_method "#{attr}=" do |arg|
+          self[attr.to_s] = arg
+        end
+      end
+
       def self.to_sql(value)
         case value
         when Numeric

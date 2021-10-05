@@ -184,3 +184,6 @@ create `sqlite_model.rb`
 
 ### Step 19: sqlite model add methods
 model add `self.create`, `self.find`, `self.all`, `[](name)`, `[]=(name, value)`, `save!`, `save`, `count` methods
+
+### Step 20: ORM Attribute
+model add method_missing dynamic to add getting and setting attribute.
