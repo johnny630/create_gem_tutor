@@ -187,3 +187,5 @@ model add `self.create`, `self.find`, `self.all`, `[](name)`, `[]=(name, value)`
 
 ### Step 20: ORM Attribute
 model add method_missing dynamic to add getting and setting attribute.
+
+### Step 21: Add postgres adaptor
