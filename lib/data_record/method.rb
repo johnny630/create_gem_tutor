@@ -33,6 +33,25 @@ module CreateGemTutor
         singular_table_name = CreateGemTutor.to_underscore name
         CreateGemTutor.to_plural singular_table_name
       end
+
+      def set_column_to_attribute
+        columns = self.connection.exec("SELECT column_name FROM information_schema.columns
+          WHERE table_name= '#{self.table_name}'").map{|m| m['column_name']}
+
+        columns.each{ |column| define_method_attribute(column) }
+      end
+
+      def define_method_attribute(name)
+        class_eval <<-STR
+          def #{name}
+            @attributes[:#{name}] || @attributes["#{name}"]
+          end
+
+          def #{name}=(value)
+            @attributes[:#{name}] = value
+          end
+        STR
+      end
     end
   end
 end
