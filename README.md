@@ -193,3 +193,5 @@ model add method_missing dynamic to add getting and setting attribute.
 ### Step 22: PostgreSQL model add attribute operation
 Implement by `class_eval` 
 Ref `class_eval` vs `define_method` https://tenderlovemaking.com/2013/03/03/dynamic_method_definitions.html
+
+### Step 23: PostgreSQL model add save save! count

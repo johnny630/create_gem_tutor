@@ -52,6 +52,23 @@ module CreateGemTutor
           end
         STR
       end
+
+      def to_sql(val)
+        case val
+        when Numeric
+          val.to_s
+        when String
+          "'#{val}'"
+        else
+          raise "Can't support #{val.class} to SQL!"
+        end
+      end
+
+      def count
+        self.connection.exec(<<-SQL)[0]['count']
+          SELECT COUNT(*) FROM #{self.table_name}
+        SQL
+      end
     end
   end
 end
