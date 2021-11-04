@@ -69,6 +69,31 @@ module CreateGemTutor
           SELECT COUNT(*) FROM #{self.table_name}
         SQL
       end
+
+      def all
+        Relation.new(self).records
+      end
+
+      def last
+        all.last
+      end
+
+      def find(id)
+        find_by_sql("SELECT * FROM #{self.table_name} WHERE id = #{id.to_s}").first
+      end
+
+      def find_by_sql(sql)
+        connection.exec(sql).map do |attributes|
+          new(attributes)
+        end
+      end
+
+      def where(query)
+        sql_syntax = query.map do |key, val|
+          "#{key.to_s} = #{self.to_sql(val)}"
+        end
+        Relation.new(self).where(sql_syntax)
+      end
     end
   end
 end

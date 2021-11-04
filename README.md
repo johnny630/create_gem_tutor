@@ -195,3 +195,6 @@ Implement by `class_eval`
 Ref `class_eval` vs `define_method` https://tenderlovemaking.com/2013/03/03/dynamic_method_definitions.html
 
 ### Step 23: PostgreSQL model add save save! count
+
+### Step 24: Create class Relation
+add `all`, `last`, `first`, `find`, `find_by_sql` and `where` methods
