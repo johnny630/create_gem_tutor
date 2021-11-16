@@ -198,3 +198,5 @@ Ref `class_eval` vs `define_method` https://tenderlovemaking.com/2013/03/03/dyna
 
 ### Step 24: Create class Relation
 add `all`, `last`, `first`, `find`, `find_by_sql` and `where` methods
+
+### Step 25: Organize active_record

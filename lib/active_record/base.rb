@@ -1,12 +1,26 @@
 require 'yaml'
 
-module CreateGemTutor
-  module DataRecord
-    module Method
+module ActiveRecord
+  class Base
+    include Persistence
+
+    def initialize(attributes = {})
+      self.class.set_column_to_attribute
+      @attributes = attributes
+
+      # 用 new_record 來紀錄有沒有重覆儲存
+      @new_record = true
+    end
+
+    def new_record?
+      @new_record
+    end
+
+    class << self
       def establish_connection
         raw = File.read('config/database.yml')
         database_config = YAML.safe_load(raw)
-
+  
         case database_config['default']['adapter']
         when 'postgresql'
           @@connection = ConnectionAdapter::PostgreSQLAdapter.new(
@@ -16,17 +30,32 @@ module CreateGemTutor
             database_config['development']['password'] || 'Passw0rd'
           )
         when 'sqlite'
-            # sqlite connection
+          @@connection = ConnectionAdapter::SQLiteAdapter.new(
+            database_config['development']['database']
+          )
         end
       end
-
+  
       def connection
         @@connection
       end
+  
+      def set_column_to_attribute
+        columns = self.connection.schema(self.table_name)
 
-      def schema
-        self.connection.exec("SELECT column_name FROM information_schema.columns
-          WHERE table_name= '#{self.table_name}'").map{|m|  m["column_name"]}
+        columns.each{ |column| define_method_attribute(column) }
+      end
+  
+      def define_method_attribute(name)
+        class_eval <<-STR
+          def #{name}
+            @attributes[:#{name}] || @attributes["#{name}"]
+          end
+  
+          def #{name}=(value)
+            @attributes[:#{name}] = value
+          end
+        STR
       end
 
       def table_name
@@ -34,23 +63,10 @@ module CreateGemTutor
         CreateGemTutor.to_plural singular_table_name
       end
 
-      def set_column_to_attribute
-        columns = self.connection.exec("SELECT column_name FROM information_schema.columns
-          WHERE table_name= '#{self.table_name}'").map{|m| m['column_name']}
-
-        columns.each{ |column| define_method_attribute(column) }
-      end
-
-      def define_method_attribute(name)
-        class_eval <<-STR
-          def #{name}
-            @attributes[:#{name}] || @attributes["#{name}"]
-          end
-
-          def #{name}=(value)
-            @attributes[:#{name}] = value
-          end
-        STR
+      def count
+        self.connection.execute(<<-SQL)[0]['count']
+          SELECT COUNT(*) FROM #{self.table_name}
+        SQL
       end
 
       def to_sql(val)
@@ -62,12 +78,6 @@ module CreateGemTutor
         else
           raise "Can't support #{val.class} to SQL!"
         end
-      end
-
-      def count
-        self.connection.exec(<<-SQL)[0]['count']
-          SELECT COUNT(*) FROM #{self.table_name}
-        SQL
       end
 
       def all
@@ -83,7 +93,7 @@ module CreateGemTutor
       end
 
       def find_by_sql(sql)
-        connection.exec(sql).map do |attributes|
+        connection.execute(sql).map do |attributes|
           new(attributes)
         end
       end
@@ -95,5 +105,6 @@ module CreateGemTutor
         Relation.new(self).where(sql_syntax)
       end
     end
+    
   end
 end
