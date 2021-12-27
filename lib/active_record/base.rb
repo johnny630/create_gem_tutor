@@ -59,8 +59,8 @@ module ActiveRecord
       end
 
       def table_name
-        singular_table_name = CreateGemTutor.to_underscore name
-        CreateGemTutor.to_plural singular_table_name
+        singular_table_name = name.to_s.to_underscore
+        singular_table_name.to_plural
       end
 
       def count

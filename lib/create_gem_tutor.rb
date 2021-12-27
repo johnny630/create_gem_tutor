@@ -1,12 +1,10 @@
 # frozen_string_literal: true
 
-require_relative "create_gem_tutor/version"
-require_relative "create_gem_tutor/routing"
-require_relative "create_gem_tutor/support"
-require_relative "create_gem_tutor/dependencies"
-require_relative "create_gem_tutor/controller"
-require_relative "create_gem_tutor/file_model"
-require_relative "create_gem_tutor/sqlite_model"
+require "create_gem_tutor/version"
+require "create_gem_tutor/routing"
+require "create_gem_tutor/controller"
+require 'active_support'
+require 'active_record'
 
 module CreateGemTutor
   class Error < StandardError; end
@@ -37,6 +35,7 @@ module CreateGemTutor
           ]
         end
       rescue => e
+        puts e
         puts e.backtrace
         # handle page not found
         [404, {'Content-Type' => 'text/html'},

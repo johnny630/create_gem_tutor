@@ -204,3 +204,5 @@ add `all`, `last`, `first`, `find`, `find_by_sql` and `where` methods
 ### Step 26: extends String and create support
 String use `Open Classes`.  
 Create support dependencies.
+
+### Step 27: revise related code by support Dependencies

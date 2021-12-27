@@ -1,4 +1,5 @@
 require "create_gem_tutor/file_model"
+require 'erubi'
 
 module CreateGemTutor
   class Controller
@@ -40,7 +41,7 @@ module CreateGemTutor
     def controller_name
       klass = self.class
       klass = klass.to_s.gsub /Controller$/, ''
-      CreateGemTutor.to_underscore(klass)
+      klass.to_underscore
     end
 
     def request
