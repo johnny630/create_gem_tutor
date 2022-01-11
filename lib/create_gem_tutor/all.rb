@@ -1,0 +1,6 @@
+require 'yaml'
+require 'create_gem_tutor'
+require 'active_support'
+require 'active_record'
+require 'create_gem_tutor/routing'
+require 'create_gem_tutor/controller'
